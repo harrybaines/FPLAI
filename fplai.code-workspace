@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "[python]": {
+      "editor.formatOnPaste": false
+    },
+    "python.pythonPath": "/Users/harrybaines/.local/share/virtualenvs/FPLAI-fCKRX5zg/bin/python"
+  }
+}
