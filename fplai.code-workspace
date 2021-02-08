@@ -8,6 +8,15 @@
     "[python]": {
       "editor.formatOnPaste": false
     },
-    "python.pythonPath": "/Users/harrybaines/.local/share/virtualenvs/FPLAI-fCKRX5zg/bin/python"
+    "python.pythonPath": "/Users/harrybaines/.local/share/virtualenvs/FPLAI-fCKRX5zg/bin/python",
+    "sqltools.connections": [
+      {
+        "previewLimit": 50,
+        "driver": "SQLite",
+        "database": "${workspaceFolder:FPLAI}/mysite/db.sqlite3",
+        "name": "mysite"
+      }
+    ],
+    "sqltools.useNodeRuntime": true
   }
 }
