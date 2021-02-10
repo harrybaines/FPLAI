@@ -2,12 +2,15 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
 
-{% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-</ul>
+<h1>Top Performing Players</h1>
+{% if elements %}
+    <ul>
+        {% for element in elements|dictsortreversed:"total_points" %}
+            <li>{{ element.web_name }}</li>
+            <p>Total Points: <strong>{{ element.total_points }}</strong>pts</p>
+            <img src="{{ element.photo_url }}" width="50">
+        {% endfor %}
+    </ul>
 {% else %}
-<p>No polls are available.</p>
+    <p>No players are available.</p>
 {% endif %}

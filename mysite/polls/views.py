@@ -3,22 +3,25 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+import requests
 
+from . import fpl, services
 from .models import Choice, Question
 
 
-class IndexView(generic.ListView):
+class IndexView(generic.TemplateView):
     template_name = "polls/index.html"
-    context_object_name = "latest_question_list"
 
-    def get_queryset(self):
-        """
-        Return the last five published questions (not including those set to be
-        published in the future).
-        """
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by(
-            "-pub_date"
-        )[:5]
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        fpl_data = services.get_fpl_data()
+        fpl_data_elements = fpl_data["elements"]
+        elements = []
+        for element in fpl_data_elements:
+            element["photo_url"] = fpl.get_player_picture(element["photo"])
+            elements.append(element)
+        data["elements"] = elements
+        return data
 
 
 class DetailView(generic.DetailView):
