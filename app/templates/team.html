@@ -1,0 +1,49 @@
+{% block content %}
+
+<div id="team-card">
+    <p>
+        This team is predicted by computing the value of each player based on their total points and their current price
+    </p>
+    <br />
+    <p class="position-header">Goalkeeper</p>
+    <ul class="list-group list-group-flush">
+        {% for player in team['Goalkeeper'] %}
+            <li class="list-group-item">
+                {{ player['second_name'] }}
+                <span class="player-price">£{{ player['now_cost'] }}m</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="position-header">Defender</p>
+    <ul class="list-group list-group-flush">
+        {% for player in team['Defender'] %}
+            <li class="list-group-item">
+                {{ player['second_name'] }}
+                <span class="player-price">£{{ player['now_cost'] }}m</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="position-header">Midfielder</p>
+    <ul class="list-group list-group-flush">
+        {% for player in team['Midfielder'] %}
+            <li class="list-group-item">
+                {{ player['second_name'] }}
+                <span class="player-price">£{{ player['now_cost'] }}m</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="position-header">Forward</p>
+    <ul class="list-group list-group-flush">
+        {% for player in team['Forward'] %}
+            <li class="list-group-item">
+                {{ player['second_name'] }}
+                <span class="player-price">£{{ player['now_cost'] }}m</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <p class="team-cost">
+        Total Cost: 
+        <strong>£{{ team_cost }}m</strong>
+    </p>
+</div>
+{% endblock content %}
